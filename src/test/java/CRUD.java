@@ -194,7 +194,6 @@ public class CRUD {
         // Then
         assertEquals(response.getStatusLine().getStatusCode(), 201);
         assertTrue(getContent(response).contains("Operation success"), "there should be 'Operation success'!");
-        mockServer.reset();
         mockServer.verify(
                 request()
                         .withMethod("GET")
