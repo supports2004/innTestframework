@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="selenium" parallel="false">
+    <parameter name="baseUrl" value="http://127.0.0.1:9030/trackings"/>
+
+    <test name="createFirstUser">
+        <parameter name="userId" value="1"/>
+        <parameter name="userName" value="firstUser"/>
+        <classes>
+            <class name="CRUD">
+                <methods>
+                    <include name="create"/>
+                    <include name="levelUp"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="createSecondUser">
+        <parameter name="userId" value="2"/>
+        <parameter name="userName" value="secondUser"/>
+        <classes>
+            <class name="CRUD">
+                <methods>
+                    <include name="create"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="createFirstUserAgain">
+        <parameter name="userId" value="1"/>
+        <parameter name="userName" value="thirdUser"/>
+        <classes>
+            <class name="CRUD">
+                <methods>
+                    <include name="createWithExistingId"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="readSecondUser">
+        <parameter name="userId" value="2"/>
+        <parameter name="userName" value="secondUser"/>
+        <classes>
+            <class name="CRUD">
+                <methods>
+                    <include name="read"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="readFirstUser">
+        <parameter name="userId" value="1"/>
+        <parameter name="userName" value="firstUser"/>
+        <classes>
+            <class name="CRUD">
+                <methods>
+                    <include name="read"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="deleteSecondUser">
+        <parameter name="userId" value="2"/>
+        <classes>
+            <class name="CRUD">
+                <methods>
+                    <include name="delete"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="deleteFirstUser">
+        <parameter name="userId" value="1"/>
+        <classes>
+            <class name="CRUD">
+                <methods>
+                    <include name="delete"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="readRemovedUser">
+        <parameter name="userId" value="2"/>
+        <parameter name="userName" value="null"/>
+        <classes>
+            <class name="CRUD">
+                <methods>
+                    <include name="read"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="readRemovedFirstUser">
+        <parameter name="userId" value="1"/>
+        <parameter name="userName"  value="null"/>
+        <classes>
+            <class name="CRUD">
+                <methods>
+                    <include name="read"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="createMandatoryFail">
+        <parameter name="userId" value="1"/>
+        <parameter name="userName" value="firstUser"/>
+        <classes>
+            <class name="CRUD">
+                <methods>
+                    <include name="createUserIdMissing"/>
+                    <include name="createEventMissing"/>
+                    <include name="createValueMissing"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
